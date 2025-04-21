@@ -20,12 +20,14 @@ namespace expression_evaluator
 
         string name = args[0].Replace(" ", ""); // remove spaces if any
 
-        List<double> numbers = new List<double>();
-        List<char> operators = new List<char>();
+
+
+        List<double> numbers = new List<double>(); //taking the numbers into one list.
+        List<char> operators = new List<char>();   //taking the operators into another list
 
         string num = "";
 
-        for (int i = 0; i < name.Length; i++)
+        for (int i = 0; i < name.Length; i++)    //parsing
         {
             char ch = name[i];
             if (char.IsDigit(ch) || ch == '.')
@@ -41,7 +43,7 @@ namespace expression_evaluator
         }
         numbers.Add(double.Parse(num));
 
-        for (int i = 0; i < operators.Count;)
+        for (int i = 0; i < operators.Count;)     //here we are adding the process like * and / operations will done before going to + and -.
         {
             if (operators[i] == '*' || operators[i] == '/')
             {
@@ -61,7 +63,7 @@ namespace expression_evaluator
 
         double finalResult = numbers[0];
 
-        for (int i = 0; i < operators.Count; i++)
+        for (int i = 0; i < operators.Count; i++)    //here is the process of the + and - operation.
         {
             if (operators[i] == '+')
                 finalResult += numbers[i + 1];
