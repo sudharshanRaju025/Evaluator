@@ -10,6 +10,11 @@ namespace expression_evaluator
 {
     internal class Calcualtor
     {
+
+         /// <summary>
+         /// Taking the one expression as input and return the result.
+         /// </summary>
+         /// <param name="args">the expression input.</param>
         public static void Main(string[] args) {
 
             if (args.Length == 0 || args[0].Length == 0)
@@ -22,9 +27,15 @@ namespace expression_evaluator
 
 
 
-        List<double> numbers = new List<double>(); //taking the numbers into one list.
-        List<char> operators = new List<char>();   //taking the operators into another list
+        List<double> numbers = new List<double>(); //Taking numbers into one list.
+        List<char> operators = new List<char>();   //Taking operators into another list.
 
+        if (numbers.Count == 5)
+            {
+                Console.WriteLine("this is the invalid expression with the four operators.");
+            }
+
+        
         string num = "";
 
         for (int i = 0; i < name.Length; i++)    //parsing
@@ -49,10 +60,26 @@ namespace expression_evaluator
             {
                 double left = numbers[i];
                 double right = numbers[i + 1];
-                double result = operators[i] == '*' ? left * right : left / right;
+                    double result;
 
-                numbers[i] = result;
-                numbers.RemoveAt(i + 1);
+                    if (operators[i] == '*')
+                    {
+                        result = left * right;
+                    }
+                    else if (right == 0)
+                    {
+                        result = left / right;
+                        Console.WriteLine("divison by zero is undefined");
+                        return;
+                    }
+                    else
+                    {
+                         result = (int) left / (int) right;
+                    }
+
+                    numbers[i] = result;
+
+                    numbers.RemoveAt(i + 1);
                 operators.RemoveAt(i);
             }
             else
