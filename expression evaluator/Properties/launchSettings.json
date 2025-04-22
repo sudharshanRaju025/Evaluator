@@ -2,7 +2,7 @@
   "profiles": {
     "expression evaluator": {
       "commandName": "Project",
-      "commandLineArgs": "100/3"
+      "commandLineArgs": "100/0-1"
     },
     "Profile 1": {
       "commandName": "Executable"

@@ -70,7 +70,7 @@ namespace expression_evaluator
                     {
                         result = left / right;
                         Console.WriteLine("divison by zero is undefined");
-                        return;
+                        Environment.Exit(1);
                     }
                     else
                     {
